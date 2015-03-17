@@ -1,0 +1,43 @@
+﻿@model IEnumerable<VehicleManagement.Models.Schedule>
+
+@{
+    ViewBag.Title = "BookedSchedule";
+}
+
+<h2>View Schedule of a vehicle</h2>
+<form method="POST">
+    <div class="form-group">
+        @Html.Label("Vehicles", new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("VehicleId")
+            <input type="submit" value="Show" />
+        </div>
+    </div>
+   
+</form>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Dates)
+        </th>
+        <th>
+            @Html.Label("Already Booked Shift")
+        </th>
+        <th></th>
+    </tr>
+@if (Model != null)
+{
+    foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dates)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Shifts.ShiftName)
+            </td>
+      
+        </tr>
+    }
+}
+</table>

@@ -1,0 +1,62 @@
+﻿@using System.Activities.Expressions
+@using System.Web.UI.WebControls
+@model IEnumerable<VehicleManagement.Models.Schedule>
+
+@{
+    ViewBag.Title = "DateSchedule";
+}
+
+<h2>View Date Between Schedule</h2>
+
+<form method="POST">
+<div class="form-group">
+    @Html.Label("Date between", new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.TextBox("From")
+       
+    </div>
+
+    <div class="form-group">
+        @Html.Label("and", new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBox("To")
+            <input type="submit" value="Show" />
+        </div>
+    </div>
+    
+</div>
+    </form>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Dates)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vehicles.RegNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Shifts.ShiftName)
+            </th>
+           
+            <th></th>
+        </tr>
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Dates)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Vehicles.RegNo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Shifts.ShiftName)
+                    </td>
+                   
+                    
+                </tr>
+            }
+        }
+    </table>
